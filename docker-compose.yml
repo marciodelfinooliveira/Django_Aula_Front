@@ -1,0 +1,17 @@
+services:
+  frontend:
+    build: .
+    container_name: react_app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
